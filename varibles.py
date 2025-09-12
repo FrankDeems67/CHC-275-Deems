@@ -13,3 +13,7 @@ print (sum)
 name = Frank the tank 
 Print (name)
 print(f"My name is {name}")
+numsix = input ("Enter Your number")
+picksa = imput ("Enter your second number")
+sum= numsix + picksa
+print(sum)
