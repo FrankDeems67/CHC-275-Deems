@@ -1,6 +1,6 @@
 actnames = ["Oliver"]
 actbalances = [1,000]
-heck = False
+check = False
 while check == False:
         print("Welcome to First Financial Credit Union!")
 
@@ -39,10 +39,12 @@ while check == False:
         elif action == "List All Accounts":
             print(actnames)
         elif action == "Add Account":
+            pass
         elif action == "Remove Account":
             print("option 3")
         elif action == "quit":
             check = True
    
 for i in range(len(actnames)):
-    print (f"Bank records for {actnames[i]}, actbalance: {actbalance[i]}")
+    print (f"Bank records for {actnames[i]}, actbalance: {actbalances[i]}")
+
