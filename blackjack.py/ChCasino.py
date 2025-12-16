@@ -1,0 +1,119 @@
+import random
+
+balance = 1000 # Starting balance for the player
+
+print("--- CHC Casino MENU ---")
+print("1. Blackjack")
+print("2. Roulette")
+print("3. SLots")
+print("4. Show Balance")
+print("5. Leave CHC Casino  ")
+Choice = input("Choose 1-5: ")
+
+if Choice == "1":
+    VALUES = {
+        '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9,
+        '10': 10, 'J': 10, 'Q': 10, 'K': 10, 'A': 11
+    }
+
+
+    def create_deck():
+        ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
+        deck = []
+        for r in ranks:
+            deck += [r] * 4
+        random.shuffle(deck)
+        return deck
+
+
+    def hand_value(hand):
+        total = 0
+        aces = 0
+        for card in hand:
+            v = VALUES[card]
+            total += v
+            if card == 'A':
+                aces += 1
+        while total > 21 and aces:
+            total -= 10
+            aces -= 1
+        return total
+
+
+    def show_hand(hand):
+        return ' '.join(hand)
+
+
+    def play_round():
+        deck = create_deck()
+        player = [deck.pop(), deck.pop()]
+        dealer = [deck.pop(), deck.pop()]
+
+        print("Your hand:", show_hand(player), "=>", hand_value(player))
+        print("Dealer shows:", dealer[0])
+
+        while True:
+            if hand_value(player) == 21:
+                print("You have 21!")
+                break
+            choice = input("Hit or Stand? (hit/stand): ").strip().lower()
+            if choice == 'hit' or choice == 'hit':
+                player.append(deck.pop())
+                print("You drew:", player[-1])
+                print("Your hand:", show_hand(player), "=>", hand_value(player))
+                if hand_value(player) > 21:
+                    print("You busted!")
+                    break
+            else:
+                break
+
+        if hand_value(player) <= 21:
+            print("Dealer's hand:", show_hand(dealer), "=>", hand_value(dealer))
+            while hand_value(dealer) < 17:
+                dealer.append(deck.pop())
+                print("Dealer draws:", dealer[-1])
+                print("Dealer's hand:", show_hand(dealer), "=>", hand_value(dealer))
+
+        player_val = hand_value(player)
+        dealer_val = hand_value(dealer)
+
+        print('\nFinal hands:')
+        print("You:", show_hand(player), "=>", player_val)
+        print("Dealer:", show_hand(dealer), "=>", dealer_val)
+
+        if player_val > 21:
+            print("You lose (bust).")
+        elif dealer_val > 21:
+            print("Dealer busts — you win!")
+        elif player_val > dealer_val:
+            print("You win!")
+        elif player_val < dealer_val:
+            print("You lose.")
+        else:
+            print("Push (tie).")
+            print("balance:", balance)
+
+
+    def main():
+        print("type 'hit' to hit, 'stand' to stand")
+        while True:
+            play_round()
+            again = input("Play again? (yes/no): ").strip().lower()
+            if again != 'yes':
+                print("Thanks for playing.")
+                print("Balance:", balance)
+                break
+
+
+    if __name__ == '__main__':
+        main()
+    print("Balance:", balance)
+
+if Choice == "2":
+    print("67")
+if Choice == "3":
+    print ("good")
+if Choice == "4":
+    print ("yay")
+if Choice == "5":
+    print(" Thank You for playing ChCasino")

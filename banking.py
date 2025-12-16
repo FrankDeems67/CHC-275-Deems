@@ -1,4 +1,4 @@
-Author: Frank Deems
+# Author: Frank Deems
 # Date: 10/10/2025
 # Title: Lab 2 - Simple Banking System
 # Description: A very simple banking system
@@ -67,7 +67,7 @@ while True:
             index = accounts.index(name)
             amount = float(input("Enter amount: "))
             if amount <= balances[index]:
-            balances[index] -= amount
+                balances[index] -= amount
                 print("Withdraw done!")
             else:
                 print("Not enough money.")
@@ -98,3 +98,8 @@ while True:
 
     else:
         print("Invalid option.")
+    else: 
+        print("You have no money")
+
+        
+        
