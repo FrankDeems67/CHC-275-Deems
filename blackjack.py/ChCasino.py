@@ -114,6 +114,6 @@ if Choice == "2":
 if Choice == "3":
     print ("good")
 if Choice == "4":
-    print ("yay")
+    
 if Choice == "5":
     print(" Thank You for playing ChCasino")
